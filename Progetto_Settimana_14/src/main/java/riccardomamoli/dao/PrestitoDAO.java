@@ -7,6 +7,7 @@ import riccardomamoli.entities.Prestito;
 import riccardomamoli.exceptions.PrestitoNotFoundException;
 
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -34,5 +35,12 @@ public class PrestitoDAO {
         } else {
             return prestiti;
         }
+    }
+
+    public List<Prestito> findScaduti() {
+        TypedQuery<Prestito> query = entityManager.createQuery("FROM Prestito p WHERE p.data_restituzione_prevista < :dataOdierna", Prestito.class);
+        query.setParameter("dataOdierna", LocalDate.now());
+        return query.getResultList();
+
     }
 }

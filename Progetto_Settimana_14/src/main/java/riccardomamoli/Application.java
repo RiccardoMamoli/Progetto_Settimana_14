@@ -104,6 +104,11 @@ public class Application {
         pd.findByTessera(5678).forEach(System.out::println);
         System.out.println(" ");
 
+        // RICERCA SCADUTI //
+        System.out.println(" ");
+        pd.findScaduti().forEach(System.out::println);
+        System.out.println(" ");
+
 
 
 
