@@ -9,7 +9,6 @@ import riccardomamoli.dao.UtenteDAO;
 import riccardomamoli.entities.*;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 
 public class Application {
@@ -52,7 +51,12 @@ public class Application {
 
         // CREAZIONE PRESTITO //
 
-        Prestito prestito1 = new Prestito(utente1, libro1, LocalDate.of(2024, 12, 10));
+        Utente utente = ud.findUserById(2);
+        elementoBaseCatalogo elementoPrestito = cd.findById(4);
+
+        Prestito prestito1 = new Prestito(utente, elementoPrestito, LocalDate.of(2024, 12, 10));
+        pd.createPrestito(prestito1);
+
 
 
 
