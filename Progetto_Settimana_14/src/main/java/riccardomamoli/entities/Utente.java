@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.UUID;
+
 
 @Entity
 @Table(name = "Utente")
@@ -13,7 +13,7 @@ public class Utente {
     @Id
     @GeneratedValue
     @Column(name = "ID Utente")
-    private UUID id;
+    private long id;
 
     @Column(name = "Nome")
     private String nome;
@@ -40,7 +40,7 @@ public class Utente {
         this.numero_tessera = numero_tessera;
     }
 
-    public UUID getId() {
+    public long getId() {
         return id;
     }
 

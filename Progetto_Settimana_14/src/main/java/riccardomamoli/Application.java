@@ -8,6 +8,8 @@ import riccardomamoli.entities.Libro;
 import riccardomamoli.entities.Periodicità;
 import riccardomamoli.entities.Rivista;
 
+import java.util.UUID;
+
 
 public class Application {
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("progetto_settimana_14");
@@ -23,10 +25,12 @@ public class Application {
         Rivista rivista2 = new Rivista("Scientific American", 2023, 98, Periodicità.MENSILE);
         Rivista rivista3 = new Rivista("Time", 2023, 60, Periodicità.SETTIMANALE);
 
-        cd.saveElement(libro2);
+       /* cd.saveElement(libro2);
         cd.saveElement(libro3);
         cd.saveElement(rivista2);
         cd.saveElement(rivista3);
+        */
+
 
 
 

@@ -4,7 +4,7 @@ package riccardomamoli.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.UUID;
+
 
 @Entity
 @Table(name = "Prestito")
@@ -13,7 +13,7 @@ public class Prestito {
     @Id
     @GeneratedValue
     @Column(name = "ID Prestito")
-    private UUID id;
+    private long id;
 
     @ManyToOne
     @JoinColumn(name = "ID Utente")
@@ -42,7 +42,7 @@ public class Prestito {
         this.data_restituzione_effettiva = data_restituzione_effettiva;
     }
 
-    public UUID getId() {
+    public long getId() {
         return id;
     }
 

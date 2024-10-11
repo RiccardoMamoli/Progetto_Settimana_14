@@ -6,7 +6,6 @@ import riccardomamoli.entities.Libro;
 import riccardomamoli.entities.elementoBaseCatalogo;
 import riccardomamoli.exceptions.NotFoundException;
 
-import java.util.UUID;
 
 public class CatalogoDAO {
     private final EntityManager entityManager;
@@ -23,13 +22,13 @@ public class CatalogoDAO {
         System.out.println("L'elemento " + elementoBaseCatalogo.getTitolo() + " è stato salvato correttamente.");
     }
 
-    public elementoBaseCatalogo findById(UUID ISBN) {
+    public elementoBaseCatalogo findById(long ISBN) {
         elementoBaseCatalogo elementFound = entityManager.find(elementoBaseCatalogo.class, ISBN);
         if (elementFound == null) throw new NotFoundException(ISBN);
         return elementFound;
     }
 
-    public void findElementAndDelete(UUID ISBN) {
+    public void findElementAndDelete(long ISBN) {
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
         elementoBaseCatalogo elemento = findById(ISBN);

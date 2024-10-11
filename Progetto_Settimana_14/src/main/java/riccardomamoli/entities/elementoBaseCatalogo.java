@@ -2,8 +2,6 @@ package riccardomamoli.entities;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
-import java.util.UUID;
 
 @Entity
 @Table(name = "catalogo")
@@ -13,7 +11,7 @@ public abstract class elementoBaseCatalogo {
     @Id
     @GeneratedValue
     @Column(name = "ID")
-    protected UUID id;
+    protected long id;
 
     @Column(name = "Titolo")
     protected String titolo;
@@ -32,7 +30,7 @@ public abstract class elementoBaseCatalogo {
         this.numero_pagine = numero_pagine;
     }
 
-    public UUID getId() {
+    public long getId() {
         return id;
     }
 
