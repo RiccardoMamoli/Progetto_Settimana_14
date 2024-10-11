@@ -34,10 +34,10 @@ public class Prestito {
 
     public Prestito(){}
 
-    public Prestito(Utente utente, riccardomamoli.entities.elementoBaseCatalogo elementoBaseCatalogo, LocalDate data_inizio_prestito, LocalDate data_restituzione_prevista, LocalDate data_restituzione_effettiva) {
+    public Prestito(Utente utente, riccardomamoli.entities.elementoBaseCatalogo elementoBaseCatalogo, LocalDate data_restituzione_effettiva) {
         this.utente = utente;
         this.elementoBaseCatalogo = elementoBaseCatalogo;
-        this.data_inizio_prestito = data_inizio_prestito;
+        this.data_inizio_prestito = LocalDate.now();
         this.data_restituzione_prevista = LocalDate.now().plusDays(30);
         this.data_restituzione_effettiva = data_restituzione_effettiva;
     }

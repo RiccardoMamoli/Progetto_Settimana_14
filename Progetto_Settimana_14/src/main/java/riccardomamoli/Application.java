@@ -4,10 +4,11 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import riccardomamoli.dao.CatalogoDAO;
-import riccardomamoli.entities.Libro;
-import riccardomamoli.entities.Periodicità;
-import riccardomamoli.entities.Rivista;
+import riccardomamoli.dao.PrestitoDAO;
+import riccardomamoli.dao.UtenteDAO;
+import riccardomamoli.entities.*;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 
@@ -16,6 +17,8 @@ public class Application {
     public static void main(String[] args) {
         EntityManager em = emf.createEntityManager();
         CatalogoDAO cd = new CatalogoDAO(em);
+        UtenteDAO ud = new UtenteDAO(em);
+        PrestitoDAO pd = new PrestitoDAO(em);
 
         Libro libro1 = new Libro("Harry Potter", 2007, 1000, "JK. Rowling", "Fantasy");
         Libro libro2 = new Libro("1984", 1949, 328, "George Orwell", "Dystopian");
@@ -25,11 +28,80 @@ public class Application {
         Rivista rivista2 = new Rivista("Scientific American", 2023, 98, Periodicità.MENSILE);
         Rivista rivista3 = new Rivista("Time", 2023, 60, Periodicità.SETTIMANALE);
 
-       /* cd.saveElement(libro2);
+        // AGGIUNTA ELEMENTI //
+
+       /* cd.saveElement(libro1);
+        cd.saveElement(libro2);
         cd.saveElement(libro3);
+        cd.saveElement(rivista1);
         cd.saveElement(rivista2);
         cd.saveElement(rivista3);
         */
+
+        // AGGIUNTA UTENTI //
+
+        Utente utente1 = new Utente("Marco", "Rossi", LocalDate.of(1996, 2, 2), 1234);
+        Utente utente2 = new Utente("Pietro", "Verdi", LocalDate.of(1997, 5, 20), 5678);
+        Utente utente3 = new Utente("Mirco", "Neri", LocalDate.of(1990, 10, 29), 9101);
+
+        /*
+        ud.saveUser(utente1);
+        ud.saveUser(utente2);
+        ud.saveUser(utente3);
+         */
+
+        // CREAZIONE PRESTITO //
+
+        Prestito prestito1 = new Prestito(utente1, libro1, LocalDate.of(2024, 12, 10));
+
+
+
+
+
+        // RICERCA ELEMENTI CON ID //
+
+        elementoBaseCatalogo elemento = cd.findById(4);
+        System.out.println(" ");
+        System.out.println("Ecco qui il risultato della ricerca:");
+        System.out.println(" ");
+        if(elemento instanceof Libro) {
+            System.out.println("Titolo: " + elemento.getTitolo() + "\nAutore: " + ((Libro) elemento).getAutore() +
+                    "\nAnno di pubblicazione: " + elemento.getAnno_pubblicazione() + "\nGenere: " + ((Libro) elemento).getGenere());
+        } else if(elemento instanceof Rivista) {
+            System.out.println("Titolo: " + elemento.getTitolo() + "\nPeriodicità: " + ((Rivista) elemento).getPeriodicità() + "\nNumero di pagine: " + elemento.getNumero_pagine());
+        }
+
+        // ELIMINA ELEMENTI PER ID //
+
+        /* elementoBaseCatalogo elementoDaEliminare = cd.findElementAndDelete(1);
+        System.out.println(" ");
+        System.out.println("Hai eliminato il seguente elemento: " + elementoDaEliminare);
+        System.out.println(" ");
+
+         */
+
+        // FILTRA PER ANNO //
+
+        System.out.println(" ");
+        cd.findByYear(2023).forEach(System.out::println);
+        System.out.println(" ");
+
+        // FILTRA PER AUTORE //
+
+        System.out.println(" ");
+        cd.findByAuthor("George").forEach(System.out::println);
+        System.out.println(" ");
+
+        // FILTRA PER TITOLO O PARTE //
+        System.out.println(" ");
+        cd.findByTitle("19").forEach(System.out::println);
+        System.out.println(" ");
+
+
+
+
+
+
 
 
 
