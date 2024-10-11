@@ -38,7 +38,7 @@ public class Prestito {
         this.utente = utente;
         this.elementoBaseCatalogo = elementoBaseCatalogo;
         this.data_inizio_prestito = data_inizio_prestito;
-        this.data_restituzione_prevista = data_restituzione_prevista;
+        this.data_restituzione_prevista = LocalDate.now().plusDays(30);
         this.data_restituzione_effettiva = data_restituzione_effettiva;
     }
 

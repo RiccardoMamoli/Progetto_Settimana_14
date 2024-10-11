@@ -7,7 +7,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "catalogo")
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 
 public abstract class elementoBaseCatalogo {
     @Id
@@ -19,14 +19,14 @@ public abstract class elementoBaseCatalogo {
     protected String titolo;
 
     @Column(name = "Anno Pubblicazione")
-    protected LocalDate anno_pubblicazione;
+    protected int anno_pubblicazione;
 
     @Column(name = "Numero Pagine")
     protected int numero_pagine;
 
     public elementoBaseCatalogo(){}
 
-    public elementoBaseCatalogo(String titolo, LocalDate anno_pubblicazione, int numero_pagine) {
+    public elementoBaseCatalogo(String titolo, int anno_pubblicazione, int numero_pagine) {
         this.titolo = titolo;
         this.anno_pubblicazione = anno_pubblicazione;
         this.numero_pagine = numero_pagine;
@@ -44,11 +44,11 @@ public abstract class elementoBaseCatalogo {
         this.titolo = titolo;
     }
 
-    public LocalDate getAnno_pubblicazione() {
+    public int getAnno_pubblicazione() {
         return anno_pubblicazione;
     }
 
-    public void setAnno_pubblicazione(LocalDate anno_pubblicazione) {
+    public void setAnno_pubblicazione(int anno_pubblicazione) {
         this.anno_pubblicazione = anno_pubblicazione;
     }
 

@@ -19,7 +19,7 @@ public class Libro extends elementoBaseCatalogo {
 
     public Libro(){}
 
-    public Libro(String titolo, LocalDate anno_pubblicazione, int numero_pagine, String autore, String genere) {
+    public Libro(String titolo, int anno_pubblicazione, int numero_pagine, String autore, String genere) {
         super(titolo, anno_pubblicazione, numero_pagine);
         this.autore = autore;
         this.genere = genere;

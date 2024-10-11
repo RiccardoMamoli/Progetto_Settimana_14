@@ -2,7 +2,6 @@ package riccardomamoli.entities;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "Rivista")
@@ -15,7 +14,7 @@ public class Rivista extends elementoBaseCatalogo {
 
     public Rivista(){}
 
-    public Rivista(String titolo, LocalDate anno_pubblicazione, int numero_pagine, Periodicità periodicità) {
+    public Rivista(String titolo, int anno_pubblicazione, int numero_pagine, Periodicità periodicità) {
         super(titolo, anno_pubblicazione, numero_pagine);
         this.periodicità = periodicità;
     }
