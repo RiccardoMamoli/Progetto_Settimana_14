@@ -90,11 +90,10 @@ public class Prestito {
     public String toString() {
         return "Prestito{" +
                 "id=" + id +
-                ", utente=" + utente +
-                ", elementoBaseCatalogo=" + elementoBaseCatalogo +
                 ", data_inizio_prestito=" + data_inizio_prestito +
                 ", data_restituzione_prevista=" + data_restituzione_prevista +
                 ", data_restituzione_effettiva=" + data_restituzione_effettiva +
                 '}';
     }
+
 }

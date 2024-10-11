@@ -52,13 +52,10 @@ public class Application {
         // CREAZIONE PRESTITO //
 
         Utente utente = ud.findUserById(2);
-        elementoBaseCatalogo elementoPrestito = cd.findById(4);
+        elementoBaseCatalogo elementoPrestito = cd.findById(6);
 
         Prestito prestito1 = new Prestito(utente, elementoPrestito, LocalDate.of(2024, 12, 10));
-        pd.createPrestito(prestito1);
-
-
-
+         // pd.createPrestito(prestito1);
 
 
 
@@ -99,6 +96,12 @@ public class Application {
         // FILTRA PER TITOLO O PARTE //
         System.out.println(" ");
         cd.findByTitle("19").forEach(System.out::println);
+        System.out.println(" ");
+
+        // RICERCA PER TESSERA //
+
+        System.out.println(" ");
+        pd.findByTessera(5678).forEach(System.out::println);
         System.out.println(" ");
 
 
